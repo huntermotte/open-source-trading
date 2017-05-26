@@ -1,0 +1,22 @@
+{
+  "name": "open-source-trading",
+  "version": "1.0.0",
+  "description": "This is a project that allows users to create securities trading ideas and interact with other traders to open source knowledge",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/huntermotte/open-source-trading.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/huntermotte/open-source-trading/issues"
+  },
+  "homepage": "https://github.com/huntermotte/open-source-trading#readme",
+  "dependencies": {
+    "express": "^4.15.3"
+  }
+}

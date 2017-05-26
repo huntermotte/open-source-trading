@@ -4,7 +4,7 @@
   "description": "This is a project that allows users to create securities trading ideas and interact with other traders to open source knowledge",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
@@ -18,5 +18,10 @@
   "homepage": "https://github.com/huntermotte/open-source-trading#readme",
   "dependencies": {
     "express": "^4.15.3"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "chai-http": "^3.0.0",
+    "mocha": "^3.4.2"
   }
 }

@@ -1,26 +1,40 @@
-const users = {
+var users = {
 "users": [
   {
     "firstName": "Bob",
     "lastName": "Smith",
-    "idea": {
-      "security": "Facebook",
+    "ideas": [
+      {
+      "security": "Facebook (FB)",
       "trade": "Long common stock",
       "description": "Revenue has grown steadily every quarter of 2016"
+    },
+    {
+      "security": "Bitcoin Investment Trust (GBTC)",
+      "trade": "Long straddle",
+      "description": "High volatility, high volume, strong movements made within the past month"
+    },
+    {
+      "security": "Nvidia (NVDA)",
+      "trade": "Short term put option",
+      "description": "Up over 200% last 52 weeks, considered overvalued. Long term bullish but opportunity for short term dip"
     }
+  ]
   }
 ]
 };
 
 function getUserIdeas(callbackFunction) {
-  setTimeout(function() {callbackFunction(users)}, 100);
+  setTimeout(function() { callbackFunction(users)}, 100);
 }
 
 function displayUserIdeas(data) {
-  for (index in data.users.idea) {
-    $('body').append(
-      '<ul>' + '<li>' + data.users.idea[index].security + '</li>' + '<li>' + data.users.idea[index].trade + '</li>' + '<li>' + data.users.idea[index].description + '</li>' + '</ul>'
-    )
+  for (i=0; i<data.users.length; i++) {
+    for (a=0; a<data.users[i].ideas.length; a++) {
+      $('body').append(
+        '<ul>' + '<li>' + data.users[i].ideas[a].security + '</li>' + '<li>' + data.users[i].ideas[a].trade + '</li>' + '<li>' + data.users[i].ideas[a].description + '</li>' + '</ul>'
+      )
+    }
   }
 }
 

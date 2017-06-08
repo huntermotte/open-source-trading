@@ -1,5 +1,6 @@
 const express = require('express');
 const jsonParser = require('bodyParser').json();
+const bcryptjs = require('bcryptjs');
 
 const Idea = require('./models')
 const router = express.Router();

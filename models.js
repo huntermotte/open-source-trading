@@ -1,4 +1,4 @@
-const bcyrpt = require('bcyrptjs');
+const bcrypt = require('bcryptjs');
 const mongoose = require('mongoose');
 
 mongoose.Promise = global.Promise;
@@ -9,11 +9,11 @@ const userSchema = new mongoose.Schema({
   ideas: Array
 });
 
-UserSchema.methods.validatePassword = function(password) {
+userSchema.methods.validatePassword = function(password) {
   return bcrypt.compare(password, this.password);
 }
 
-UserSchema.statics.hashPassword = function(password) {
+userSchema.statics.hashPassword = function(password) {
   return bcrypt.hash(password, 10);
 }
 

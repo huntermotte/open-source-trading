@@ -1,43 +1,74 @@
 const express = require('express');
-const jsonParser = require('bodyParser').json();
+const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
 const bcryptjs = require('bcryptjs');
-
-const Idea = require('./models')
-const router = express.Router();
+const session = require('express-session');
+const passport = require('passport');
 
 mongoose.Promise = global.Promise;
 
-router.use(jsonParser);
+const {User} = require('./models')
+const router = express.Router();
+router.use(bodyParser.json());
+router.use(bodyParser.urlencoded({extended: false}));
 
-router.get('/', (req, res) => {
-  Idea.find(err, ideas) => {
-    if(err) => {
-      res.send(err)
-    }
-    res.send(ideas)
-  }
-});
+// router.get('/', (req, res) => {
+//   User.find(err, ideas) => {
+//     if(err) => {
+//       res.send(err)
+//     }
+//     res.send(ideas)
+//   }
+// });
+
+// function loggedIn(req, res, next) {
+//   if (req.user) {
+//     next()
+//   }
+//   else {
+//     console.log('Not the user');
+//   }
+// }
 
 router.post('/', (req, res) => {
-  const requiredFields = ['security', 'trade', 'description'];
-  for (let i=0; i<requiredFields.length; i++) {
-    const field = requiredFields[i];
-    if (!(requiredFields in req.body)) {
-      const message = `Missing \`${field}\` in request body`
-      console.log(message);
-      return res.status(400).send(message)
-    }
+  console.log(req.user);
+  console.log(req.body);
+  if (!req.body) {
+    return res.status(400).json({message: "No request body"});
   }
-const newIdea = new Idea()
 
-newIdea.security = req.body.security
-newIdea.trade = req.body.trade
-newIdea.description = req.body.description
-
-newIdea.save((err, record) => {
-  if(err) {
-    res.send(err)
+  if (!('security' in req.body)) {
+    return res.status(422).json({message: 'Missing field: security'});
   }
-  res.json(record)
+
+  let {security, trade, description} = req.body;
+
+  if (!(trade)) {
+    return res.status(422).json({message: 'Missing field: trade'});
+  }
+
+  if (!(description)) {
+    return res.status(422).json({message: 'Missing field: description'});
+  }
+
+  // if (req.user) {
+
+return User
+.create({
+    ideas: [{security: req.body.security, trade: req.body.trade, description: req.body.description}]
+})
+.then(idea => {
+  console.log(idea)
+  res.json(idea);
+})
+.catch(err => {
+  console.log(err)
+})
+// }
+// else {
+//   console.log("User not authenticated");
+// }
+
 });
-});
+
+module.exports = router;

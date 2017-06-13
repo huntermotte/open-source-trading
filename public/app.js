@@ -42,6 +42,20 @@ function getAndDisplayTradeIdeas() {
   getUserIdeas(displayUserIdeas);
 }
 
+$('.logout').click(function(event) {
+  event.preventDefault();
+  $.ajax({
+    type: 'GET',
+    url: 'http://localhost:8080/users/logout',
+    success: function(data) {
+      console.log(data);
+      if (data.loggedOut) {
+        window.location.replace('http://localhost:8080/index.html')
+      }
+    }
+  })
+})
+
 $(function() {
   getAndDisplayTradeIdeas();
 })

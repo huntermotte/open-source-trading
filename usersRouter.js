@@ -1,6 +1,8 @@
-const {BasicStrategy} = require('passport-http');
+const LocalStrategy = require('passport-local').Strategy;
 const express = require('express');
 const bodyParser = require('body-parser');
+const session = require('express-session');
+const cookieParser = require('cookie-parser');
 const passport = require('passport');
 const bcrypt = require('bcryptjs');
 const mongoose = require('mongoose');
@@ -12,34 +14,7 @@ const router = express.Router();
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({extended: false}));
 
-const basicStrategy = new BasicStrategy((username, password, callback) => {
-  let user;
-  User
-    .findOne({username: username})
-    .exec()
-    .then(_user => {
-      user = _user;
-      if (!user) {
-        return callback(null, false, {message: 'Incorrect username'});
-      }
-      return user.validatePassword(password);
-    })
-    .then(isValid => {
-      if (!isValid) {
-        return callback(null, false, {message: 'Incorrect password'});
-      }
-      else {
-        return callback(null, user)
-      }
-    });
-});
-
-passport.use(basicStrategy);
-router.use(passport.initialize());
-
 router.post('/', (req, res) => {
-  console.log(req.body);
-  console.log(req.body.username);
   if (!req.body) {
     return res.status(400).json({message: "No request body"});
   }
@@ -91,6 +66,7 @@ router.post('/', (req, res) => {
     })
   })
     .then(user => {
+      console.log(user)
       res.json(user)
     })
 });
@@ -105,10 +81,62 @@ router.get('/', (req, res) => {
   });
 });
 
+passport.use(new LocalStrategy(
+  function(username, password, done) {
+    User.findOne({ username: username }, function (err, user) {
+      console.log(user)
+      if (err) { return done(err); }
+      if (!user) {
+        return done(null, false, { message: 'Incorrect username.' });
+      }
+      if (!user.validatePassword(password)) {
+        return done(null, false, { message: 'Incorrect password.' });
+      }
+      return done(null, user);
+    });
+  }
+));
+
+router.use(session({
+	secret: 'keyboard cat',
+	resave: false,
+	saveUninitialized: false,
+	cookie: {}
+}));
+
+router.use(passport.initialize());
+router.use(passport.session());
+
+passport.serializeUser(function(user, done) {
+  console.log('serializeUser being called', user.id);
+  done(null, user.id);
+});
+
+passport.deserializeUser(function(id, done) {
+  User.findById(id, function(err, user) {
+    console.log('this is the user', user);
+    done(err, user);
+  });
+});
+
+router.get('/test', (req, res) => {
+  console.log(req.user)
+})
+
 router.get('/me',
-  // passport.authenticate('basic', {session: false}),
-  (req, res) => res.json({user: req.user})
-);
+  passport.authenticate('local', { session: true }),
+  function(req, res) {
+    res.json(req.user);
+  });
+
+  router.get('/logout', function(req, res) {
+  	req.session.destroy(function (err) {
+  		if(err){
+  			res.send(err);
+  		}
+  		res.json({loggedOut : true})
+    	});
+  })
 
 
 module.exports = router;

@@ -30,45 +30,45 @@ router.use(bodyParser.urlencoded({extended: false}));
 //   }
 // }
 
-router.post('/', (req, res) => {
-  console.log(req.user);
-  console.log(req.body);
-  if (!req.body) {
-    return res.status(400).json({message: "No request body"});
-  }
-
-  if (!('security' in req.body)) {
-    return res.status(422).json({message: 'Missing field: security'});
-  }
-
-  let {security, trade, description} = req.body;
-
-  if (!(trade)) {
-    return res.status(422).json({message: 'Missing field: trade'});
-  }
-
-  if (!(description)) {
-    return res.status(422).json({message: 'Missing field: description'});
-  }
-
-  // if (req.user) {
-
-return User
-.create({
-    ideas: [{security: req.body.security, trade: req.body.trade, description: req.body.description}]
-})
-.then(idea => {
-  console.log(idea)
-  res.json(idea);
-})
-.catch(err => {
-  console.log(err)
-})
-// }
-// else {
-//   console.log("User not authenticated");
-// }
-
-});
+// router.post('/', (req, res) => {
+//   console.log(req.user);
+//   console.log(req.body);
+//   if (!req.body) {
+//     return res.status(400).json({message: "No request body"});
+//   }
+//
+//   if (!('security' in req.body)) {
+//     return res.status(422).json({message: 'Missing field: security'});
+//   }
+//
+//   let {security, trade, description} = req.body;
+//
+//   if (!(trade)) {
+//     return res.status(422).json({message: 'Missing field: trade'});
+//   }
+//
+//   if (!(description)) {
+//     return res.status(422).json({message: 'Missing field: description'});
+//   }
+//
+//   // if (req.user) {
+//
+// return User
+// .create({
+//     ideas: [{security: req.body.security, trade: req.body.trade, description: req.body.description}]
+// })
+// .then(idea => {
+//   console.log(idea)
+//   res.json(idea);
+// })
+// .catch(err => {
+//   console.log(err)
+// })
+// // }
+// // else {
+// //   console.log("User not authenticated");
+// // }
+//
+// });
 
 module.exports = router;

@@ -14,6 +14,7 @@ const router = express.Router();
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({extended: false}));
 
+// create users
 router.post('/', (req, res) => {
   if (!req.body) {
     return res.status(400).json({message: "No request body"});
@@ -71,6 +72,7 @@ router.post('/', (req, res) => {
     })
 });
 
+// get users
 router.get('/', (req, res) => {
   User.find({}, (err, users) => {
     if(err) {
@@ -100,15 +102,13 @@ passport.use(new LocalStrategy(
 router.use(session({
 	secret: 'keyboard cat',
 	resave: false,
-	saveUninitialized: false,
-	cookie: {}
+	saveUninitialized: true
 }));
 
 router.use(passport.initialize());
 router.use(passport.session());
 
 passport.serializeUser(function(user, done) {
-  console.log('serializeUser being called', user.id);
   done(null, user.id);
 });
 
@@ -119,16 +119,67 @@ passport.deserializeUser(function(id, done) {
   });
 });
 
-router.get('/test', (req, res) => {
-  console.log(req.user)
-})
+const isAuthenticated = (req, res, next) => {
+  console.log('Are we authenticated', req.user);
+  if(req.user) {
+    next()
+  }
+  else {
+  res.redirect('/')
+}
+}
 
+// create new ideas on user schema
+router.put('/ideas', isAuthenticated, (req, res) => {
+  if (!req.body) {
+    return res.status(400).json({message: "No request body"});
+  }
+
+  if (!('security' in req.body)) {
+    return res.status(422).json({message: 'Missing field: security'});
+  }
+
+  let {security, trade, description} = req.body;
+
+  if (!(trade)) {
+    return res.status(422).json({message: 'Missing field: trade'});
+  }
+
+  if (!(description)) {
+    return res.status(422).json({message: 'Missing field: description'});
+  }
+
+return User
+.findByIdAndUpdate(
+  req.user._id,
+  {$push: {"ideas": req.body}},
+  (err) => {
+    if(err) {
+      res.send(err)
+    }
+    User.findById(req.user._id, (err, user) => {
+      console.log('Should be new user', user)
+      if(err) {
+        res.send(err)
+      }
+      res.json(user)
+    })
+  })
+  res.json(user)
+});
+
+// router.get('/test', (req, res) => {
+//   console.log('Here is req.users', req.user)
+// })
+
+// login endpoint
 router.get('/me',
   passport.authenticate('local', { session: true }),
   function(req, res) {
     res.json(req.user);
   });
 
+// logout endpoint
   router.get('/logout', function(req, res) {
   	req.session.destroy(function (err) {
   		if(err){

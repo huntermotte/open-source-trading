@@ -7,16 +7,11 @@ $('.newIdeaForm').submit(function(event) {
   console.log(payLoad);
   console.log(security);
   $.ajax({
-    type: 'POST',
+    type: 'PUT',
     data: payLoad,
-    contentType: 'application/x-www-form-urlencoded',
-    beforeSend: function(xhr){
-       xhr.withCredentials = true;
-    },
-    crossDomain: true,
-    url: 'http://localhost:8080/ideas',
+    url: 'http://localhost:8080/users/ideas',
     success: function(data) {
-      console.log('success');
+      console.log(data);
       // window.location.replace('http://localhost:8080/profile.html')
     }
 })

@@ -12,7 +12,7 @@ $('.newIdeaForm').submit(function(event) {
     url: 'http://localhost:8080/users/ideas',
     success: function(data) {
       console.log(data);
-      // window.location.replace('http://localhost:8080/profile.html')
+      window.location.replace('http://localhost:8080/profile.html')
     }
 })
 })

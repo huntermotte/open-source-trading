@@ -1,46 +1,5 @@
-var users = {
-"users": [
-  {
-    "firstName": "Bob",
-    "lastName": "Smith",
-    "ideas": [
-      {
-      "security": "Facebook (FB)",
-      "trade": "Long common stock",
-      "description": "Revenue has grown steadily every quarter of 2016"
-    },
-    {
-      "security": "Bitcoin Investment Trust (GBTC)",
-      "trade": "Long straddle",
-      "description": "High volatility, high volume, strong movements made within the past month"
-    },
-    {
-      "security": "Nvidia (NVDA)",
-      "trade": "Short term put option",
-      "description": "Up over 200% last 52 weeks, considered overvalued. Long term bullish but opportunity for short term dip"
-    }
-  ]
-  }
-]
-};
-
-function getUserIdeas(callbackFunction) {
-  setTimeout(function() { callbackFunction(users)}, 100);
-}
-
-function displayUserIdeas(data) {
-  for (i=0; i<data.users.length; i++) {
-    for (a=0; a<data.users[i].ideas.length; a++) {
-      $('body').append(
-        '<ul>' + '<li>' + data.users[i].ideas[a].security + '</li>' + '<li>' + data.users[i].ideas[a].trade + '</li>' + '<li>' + data.users[i].ideas[a].description + '</li>' + '</ul>'
-      )
-    }
-  }
-}
-
-function getAndDisplayTradeIdeas() {
-  getUserIdeas(displayUserIdeas);
-}
+$(document).ready(function() {
+  getAndDisplayTradeIdeas()
 
 $('.logout').click(function(event) {
   event.preventDefault();
@@ -56,6 +15,27 @@ $('.logout').click(function(event) {
   })
 })
 
-$(function() {
-  getAndDisplayTradeIdeas();
-})
+function getUserIdeas(displayUserIdeas) {
+    $.ajax({
+      type: 'GET',
+      url: 'http://localhost:8080/users/ideas',
+      success: function(data) {
+        displayUserIdeas(data)
+    }
+    });
+};
+
+function displayUserIdeas(data) {
+  for (i=0; i<data.ideas.length; i++) {
+    console.log(data.ideas[i])
+      $('body').append(
+        '<ul>' + '<li>' + data.ideas[i].security + '</li>' + '<li>' + data.ideas[i].trade + '</li>' + '<li>' + data.ideas[i].description + '</li>' + '</ul>'
+      )
+  }
+}
+
+function getAndDisplayTradeIdeas() {
+  getUserIdeas(displayUserIdeas);
+}
+
+});

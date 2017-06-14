@@ -83,6 +83,7 @@ router.get('/', (req, res) => {
   });
 });
 
+
 passport.use(new LocalStrategy(
   function(username, password, done) {
     User.findOne({ username: username }, function (err, user) {
@@ -168,9 +169,15 @@ return User
   res.json(user)
 });
 
-// router.get('/test', (req, res) => {
-//   console.log('Here is req.users', req.user)
-// })
+// get ideas
+router.get('/ideas', isAuthenticated, (req, res) => {
+  User.findById(req.user._id, (err, ideas) => {
+    if(err) {
+      res.send(err)
+    }
+    res.json(ideas)
+  });
+});
 
 // login endpoint
 router.get('/me',

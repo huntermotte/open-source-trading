@@ -15,6 +15,21 @@ $('.logout').click(function(event) {
   })
 })
 
+$('body').on('click', '.delete', function(event) {
+  event.preventDefault();
+  const ideaID = $(this).parent().children('input').val();
+  const payLoad = {ideaID};
+  $.ajax({
+    type: 'POST',
+    data: payLoad,
+    url: 'http://localhost:8080/users/ideas/delete',
+    success: function(data) {
+      console.log(data);
+      window.location.replace('http://localhost:8080/profile.html')
+    }
+  })
+})
+
 function getUserIdeas(displayUserIdeas) {
     $.ajax({
       type: 'GET',
@@ -29,7 +44,7 @@ function displayUserIdeas(data) {
   for (i=0; i<data.ideas.length; i++) {
     console.log(data.ideas[i])
       $('body').append(
-        '<ul>' + '<li>' + data.ideas[i].security + '</li>' + '<li>' + data.ideas[i].trade + '</li>' + '<li>' + data.ideas[i].description + '</li>' + '</ul>'
+        '<ul>' + '<li>' + data.ideas[i].security + '</li>' + '<li>' + data.ideas[i].trade + '</li>' + '<li>' + data.ideas[i].description + '</li>' + '<input type="hidden" class="ideaID" value="' + data.ideas[i].id + '"</input>' + '<button type="button" class="delete">' + 'Delete Idea' + '</button>' + '</ul>'
       )
   }
 }

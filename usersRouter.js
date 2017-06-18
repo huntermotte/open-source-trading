@@ -67,7 +67,6 @@ router.post('/', (req, res) => {
     })
   })
     .then(user => {
-      console.log(user)
       res.json(user)
     })
 });
@@ -87,7 +86,6 @@ router.get('/', (req, res) => {
 passport.use(new LocalStrategy(
   function(username, password, done) {
     User.findOne({ username: username }, function (err, user) {
-      console.log(user)
       if (err) { return done(err); }
       if (!user) {
         return done(null, false, { message: 'Incorrect username.' });
@@ -115,13 +113,11 @@ passport.serializeUser(function(user, done) {
 
 passport.deserializeUser(function(id, done) {
   User.findById(id, function(err, user) {
-    console.log('this is the user', user);
     done(err, user);
   });
 });
 
 const isAuthenticated = (req, res, next) => {
-  console.log('Are we authenticated', req.user);
   if(req.user) {
     next()
   }
@@ -140,7 +136,7 @@ router.put('/ideas', isAuthenticated, (req, res) => {
     return res.status(422).json({message: 'Missing field: security'});
   }
 
-  let {security, trade, description} = req.body;
+  let {security, trade, description, id} = req.body;
 
   if (!(trade)) {
     return res.status(422).json({message: 'Missing field: trade'});
@@ -159,7 +155,6 @@ return User
       res.send(err)
     }
     User.findById(req.user._id, (err, user) => {
-      console.log('Should be new user', user)
       if(err) {
         res.send(err)
       }
@@ -177,6 +172,16 @@ router.get('/ideas', isAuthenticated, (req, res) => {
     }
     res.json(ideas)
   });
+});
+
+// delete ideas
+router.post('/ideas/delete', isAuthenticated, (req, res) => {
+  let {ideaID} = req.body;
+  User.findByIdAndUpdate(req.user._id,
+     {$pull: {"ideas": {id: req.body.ideaID}}},
+     {new: true})
+     .then(updatedIdea => res.json({user: updatedIdea}))
+     .catch(err => res.send(err))
 });
 
 // login endpoint

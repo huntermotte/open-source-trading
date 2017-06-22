@@ -1,0 +1,95 @@
+body {
+  background: dodgerblue;
+  /*background-image: url(black-green.svg);*/
+  /*background: lime; /* For browsers that do not support gradients */
+   /* Safari */
+  /*background: -webkit-radial-gradient(circle, white, lime, black);*/
+   /* Opera 11.6 to 12.0 */
+  /*background: -o-radial-gradient(circle, white, lime, black);*/
+  /* Firefox 3.6 to 15 */
+  /*background: -moz-radial-gradient(circle, white, lime, black);*/
+  /* Standard syntax */
+  /*background: radial-gradient(circle, white, lime, black);*/*/
+  /*background-size: cover;*/
+}
+
+p.main {
+  font-size: 75px;
+  /*font-family: 'Bungee Shade', cursive;*/
+  font-family: 'Archivo Black', sans-serif;
+  color: white;
+  text-align: center;
+  background: black;
+  box-shadow: 0px -5px 10px 6px white;
+  padding: 20px;
+}
+
+p.secondary {
+  font-size: 30px;
+  /*font-family: 'Bungee Shade', cursive;*/
+  font-family: 'Archivo Black', sans-serif;
+  color: white;
+  text-align: center;
+  padding: 15px;
+}
+
+p.subheader {
+  font-size: 25px;
+}
+
+.top-header {
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 50px;
+}
+
+.user-buttons {
+  text-align: center;
+}
+
+.login-button {
+  background-color: black;
+  color: white;
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 35px;
+  font-weight: bold;
+  width: 300px;
+  height: 60px;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: -5px -5px 18px 2px black
+}
+
+.register-button {
+  background-color: black;
+  color: white;
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 35px;
+  font-weight: bold;
+  width: 300px;
+  height: 60px;
+  text-align: center;
+  box-shadow: -5px -5px 18px 2px black
+}
+
+#greywrap {
+  margin-top: 15px;
+  padding-top: 20px;
+  background: black; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(black, dodgerblue); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(black, dodgerblue); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(black, dodgerblue); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(black, dodgerblue); /* Standard syntax (must be last) */
+}
+
+h2 {
+  font-size: 45px;
+}
+
+.col-lg-4 {
+  text-align: center;
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 15px;
+  color: white;
+}

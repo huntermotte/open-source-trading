@@ -3,20 +3,26 @@
   <head>
     <meta charset="utf-8">
     <title>Register</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <link rel="stylesheet" href="register.css">
   </head>
   <body>
 
     <form class="registration-form">
-    Choose a Username:<br>
-    <input type="text" name="" class="newUsername" value="">
+    <label for="userUsername" class="usernameText">Choose a Username:</label><br>
+    <input type="text" name="" class="newUsername form-control" placeholder="Choose a Username" value="">
     <br>
-    Choose a Password:<br>
-    <input type="text" name="" class="newPassword" value="">
+    <label for="userPassword" class="passwordText">Choose a Password:</label><br>
+    <input type="password" name="" class="newPassword form-control" placeholder="Choose a Password" value="">
     <br><br>
-    <input type="submit" value="Register">
+    <div class="buttons">
+    <input type="submit" class="btn btn-default" value="Register">
+    <a href="index.html"><button type=button class="btn btn-default">Home</button></a>
+  </div>
   </form><br>
-
-  <a href="index.html"><button type=button>Home</button></a>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
   <script type="text/javascript" src="register.js"></script>

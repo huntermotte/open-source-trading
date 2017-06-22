@@ -1,0 +1,77 @@
+body {
+}
+
+.intro {
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 20px;
+  text-align: center;
+  border: 2px solid black;
+}
+
+.container-fluid {
+  text-align: center;
+}
+
+ul {
+  font-size: 20px;
+  font-family: 'Archivo Black', sans-serif;
+}
+
+li {
+  list-style: none;
+}
+
+.col-md-12 {
+  background: white;
+}
+
+.page-header {
+  color: white;
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 25px;
+  background: black; /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(left, black, dodgerblue); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(right, black, dodgerblue); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(right, black, dodgerblue); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(to right, black, dodgerblue); /* Standard syntax */
+}
+
+.navbar-header {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.btn-default {
+  font-size: 20px;
+  text-align: center;
+}
+
+.row {
+  text-align: center;
+}
+
+.main-buttons {
+  text-align: center;
+  padding-top: 20px;
+  font-size: 40px;
+}
+
+.delete {
+  text-align: center;
+  margin-top: 30px;
+}
+
+/* Extra small devices (phones, less than 768px) */
+/* No media query since this is the default in Bootstrap */
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: @screen-sm-min) { ... }
+
+/* Medium devices (desktops, 992px and up) */
+@media (min-width: @screen-md-min) { ... }
+
+/* Large devices (large desktops, 1200px and up) */
+@media (min-width: @screen-lg-min) { ... }

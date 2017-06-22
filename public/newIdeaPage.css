@@ -1,0 +1,46 @@
+body {
+  background: dodgerblue;
+  /*background-image: url(black-green.svg);
+  background-size: cover;*/
+}
+
+.newIdeaForm {
+  width: 400px;
+  height: 420px;
+	margin-right: auto;
+	margin-left: auto;
+	padding-left: 17px;
+	padding-right: 17px;
+  padding-top: 10px;
+	background-color: black;
+	margin-top: 180px;
+  border: 10px solid white;
+}
+
+.buttons {
+  text-align: center;
+}
+
+.btn-default {
+  font-size: 18px;
+  color: black;
+  font-weight: bold;
+}
+
+.ideaSecurity {
+  color: white;
+  font-size: 30px;
+  text-align: center;
+}
+
+.ideaTrade {
+  color: white;
+  font-size: 30px;
+  text-align: center;
+}
+
+.ideaDescription {
+  color: white;
+  font-size: 30px;
+  text-align: center;
+}

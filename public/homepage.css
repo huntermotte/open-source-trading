@@ -1,16 +1,10 @@
 body {
-  background: dodgerblue;
-  /*background-image: url(black-green.svg);*/
-  /*background: lime; /* For browsers that do not support gradients */
-   /* Safari */
-  /*background: -webkit-radial-gradient(circle, white, lime, black);*/
-   /* Opera 11.6 to 12.0 */
-  /*background: -o-radial-gradient(circle, white, lime, black);*/
-  /* Firefox 3.6 to 15 */
-  /*background: -moz-radial-gradient(circle, white, lime, black);*/
-  /* Standard syntax */
-  /*background: radial-gradient(circle, white, lime, black);*/*/
+  background-image: url(intlchart.jpg);
   /*background-size: cover;*/
+  height: 80%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 p.main {
@@ -76,11 +70,11 @@ p.subheader {
 #greywrap {
   margin-top: 15px;
   padding-top: 20px;
-  background: black; /* For browsers that do not support gradients */
-    background: -webkit-linear-gradient(black, dodgerblue); /* For Safari 5.1 to 6.0 */
-    background: -o-linear-gradient(black, dodgerblue); /* For Opera 11.1 to 12.0 */
-    background: -moz-linear-gradient(black, dodgerblue); /* For Firefox 3.6 to 15 */
-    background: linear-gradient(black, dodgerblue); /* Standard syntax (must be last) */
+  background:  dodgerblue; /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(black, dodgerblue); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(black, dodgerblue); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(black, dodgerblue); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(black, dodgerblue); /* Standard syntax */
 }
 
 h2 {

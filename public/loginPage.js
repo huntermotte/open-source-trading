@@ -10,7 +10,7 @@ $('.login').submit(function(event) {
     contentType: 'application/x-www-form-urlencoded',
     url: 'http://localhost:8080/users/me',
     success: function(data) {
-      window.location.replace('http://localhost:8080/profile.html')
+      window.location.replace('http://localhost:8080/explore.html')
     }
   })
 })

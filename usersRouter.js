@@ -184,6 +184,20 @@ router.post('/ideas/delete', isAuthenticated, (req, res) => {
      .catch(err => res.send(err))
 });
 
+// get ideas from other users for explore page-header
+router.get('/ideas/explore', (req, res) => {
+  User.find({})
+  .then(users => {
+    res.json({users: users.map(
+      (user) => user.createExample())
+    });
+  })
+  .catch(err => {
+    console.log(err)
+    res.json({message: 'Internal server error'})
+  });
+});
+
 // login endpoint
 router.get('/me',
   passport.authenticate('local', { session: true }),

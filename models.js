@@ -17,6 +17,14 @@ userSchema.statics.hashPassword = function(password) {
   return bcrypt.hash(password, 10);
 }
 
+userSchema.methods.createExample = function() {
+  return {
+    _id: this._id,
+    username: this.username,
+    ideas: this.ideas
+  };
+}
+
 const User = mongoose.model('User', userSchema);
 
 module.exports = {User};

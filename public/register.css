@@ -25,6 +25,10 @@ body {
   font-weight: bold;
 }
 
+.logo {
+  padding-left: 10px;
+}
+
 .usernameText {
   color: white;
   font-size: 30px;

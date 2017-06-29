@@ -8,9 +8,9 @@ $('.login').submit(function(event) {
     type: 'GET',
     data: payLoad,
     contentType: 'application/x-www-form-urlencoded',
-    url: 'http://localhost:8080/users/me',
+    url: 'https://gentle-peak-73337.herokuapp.com/users/me',
     success: function(data) {
-      window.location.replace('http://localhost:8080/explore.html')
+      window.location.replace('https://gentle-peak-73337.herokuapp.com/explore.html')
     }
   })
 })

@@ -5,11 +5,11 @@ $('.logout').click(function(event) {
   event.preventDefault();
   $.ajax({
     type: 'GET',
-    url: 'http://localhost:8080/users/logout',
+    url: 'https://gentle-peak-73337.herokuapp.com/users/logout',
     success: function(data) {
       console.log(data);
       if (data.loggedOut) {
-        window.location.replace('http://localhost:8080/index.html')
+        window.location.replace('https://gentle-peak-73337.herokuapp.com/index.html')
       }
     }
   })
@@ -22,10 +22,10 @@ $('body').on('click', '.delete', function(event) {
   $.ajax({
     type: 'POST',
     data: payLoad,
-    url: 'http://localhost:8080/users/ideas/delete',
+    url: 'https://gentle-peak-73337.herokuapp.com/users/ideas/delete',
     success: function(data) {
       console.log(data);
-      window.location.replace('http://localhost:8080/profile.html')
+      window.location.replace('https://gentle-peak-73337.herokuapp.com/profile.html')
     }
   })
 })
@@ -33,7 +33,7 @@ $('body').on('click', '.delete', function(event) {
 function getUserIdeas(displayUserIdeas) {
     $.ajax({
       type: 'GET',
-      url: 'http://localhost:8080/users/ideas',
+      url: 'https://gentle-peak-73337.herokuapp.com/users/ideas',
       success: function(data) {
         displayUserIdeas(data)
     }

@@ -10,10 +10,10 @@ $('.newIdeaForm').submit(function(event) {
   $.ajax({
     type: 'PUT',
     data: payLoad,
-    url: 'http://localhost:8080/users/ideas',
+    url: 'https://gentle-peak-73337.herokuapp.com/users/ideas',
     success: function(data) {
       console.log(data);
-      window.location.replace('http://localhost:8080/profile.html')
+      window.location.replace('https://gentle-peak-73337.herokuapp.com/profile.html')
     }
 })
 })

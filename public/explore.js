@@ -5,11 +5,11 @@ $('.logout').click(function(event) {
   event.preventDefault();
   $.ajax({
     type: 'GET',
-    url: 'http://localhost:8080/users/logout',
+    url: 'https://gentle-peak-73337.herokuapp.com/users/logout',
     success: function(data) {
       console.log(data);
       if (data.loggedOut) {
-        window.location.replace('http://localhost:8080/index.html')
+        window.location.replace('https://gentle-peak-73337.herokuapp.com/index.html')
       }
     }
   })
@@ -18,7 +18,7 @@ $('.logout').click(function(event) {
 function getDifferentUserIdeas(displayDifferentUserIdeas) {
     $.ajax({
       type: 'GET',
-      url: 'http://localhost:8080/users/ideas/explore',
+      url: 'https://gentle-peak-73337.herokuapp.com/users/ideas/explore',
       success: function(data) {
         displayDifferentUserIdeas(data)
     }

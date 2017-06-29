@@ -3,7 +3,6 @@ $('.login').submit(function(event) {
   const username = $('.username').val();
   const password = $('.password').val();
   const payLoad = {username, password};
-  console.log(payLoad);
   $.ajax({
     type: 'GET',
     data: payLoad,

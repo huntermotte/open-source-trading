@@ -3,8 +3,6 @@ $('.registration-form').submit(function(event) {
   const username = $('.newUsername').val();
   const password = $('.newPassword').val();
   const payLoad = {username, password};
-  console.log(payLoad);
-  console.log(username);
   $.ajax({
     type: 'POST',
     data: payLoad,

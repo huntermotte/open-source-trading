@@ -45,6 +45,10 @@ li {
   margin-right: auto;
 }
 
+.logo {
+  padding-left: 15px;
+}
+
 .btn-default {
   font-size: 20px;
   text-align: center;

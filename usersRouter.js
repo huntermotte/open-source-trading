@@ -67,6 +67,7 @@ router.post('/', (req, res) => {
     })
   })
     .then(user => {
+      console.log(user)
       res.json(user)
     })
 });

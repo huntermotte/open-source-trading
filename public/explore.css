@@ -17,6 +17,10 @@ li {
   margin-top: 20px;
 }
 
+.column {
+  min-height: 100%;
+}
+
 nav {
   background: black; /* For browsers that do not support gradients */
   background: -webkit-linear-gradient(right, black, dodgerblue); /* For Safari 5.1 to 6.0 */

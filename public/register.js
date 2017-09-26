@@ -10,6 +10,10 @@ $('.registration-form').submit(function(event) {
     url: 'https://gentle-peak-73337.herokuapp.com/users',
     success: function(data) {
       window.location.replace('https://gentle-peak-73337.herokuapp.com/loginPage.html')
+    },
+    error: (err) => {
+      console.log(err)
+      alert('Incorrect username and password! Please try again')
     }
-})
+  })
 })

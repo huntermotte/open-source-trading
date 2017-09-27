@@ -13,7 +13,7 @@ $('.registration-form').submit(function(event) {
     },
     error: (err) => {
       console.log(err)
-      alert('Incorrect username and password! Please try again')
+      alert('Please enter a unique username and/or password')
     }
   })
 })

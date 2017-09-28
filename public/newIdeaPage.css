@@ -21,10 +21,18 @@ body {
   text-align: center;
 }
 
-.btn-default {
+.btn-default, .btn-default:active {
   font-size: 18px;
   color: black;
+  font-family: 'Ubuntu', sans-serif;
+  background: white;
+  color: dodgerblue;
   font-weight: bold;
+}
+
+.btn-default:hover {
+  background: dodgerblue;
+  color: white;
 }
 
 .ideaSecurity {

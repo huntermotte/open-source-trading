@@ -21,7 +21,8 @@ userSchema.methods.createExample = function() {
   return {
     _id: this._id,
     username: this.username,
-    ideas: this.ideas
+    ideas: this.ideas,
+    created: this.created
   };
 }
 

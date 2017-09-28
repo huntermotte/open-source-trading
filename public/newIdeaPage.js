@@ -3,8 +3,9 @@ $('.newIdeaForm').submit(function(event) {
   const security = $('.security').val();
   const trade = $('.trade').val();
   const description = $('.description').val();
+  const created = new Date();
   const id = Math.random();
-  const payLoad = {security, trade, description, id};
+  const payLoad = {security, trade, description, id, created};
   $.ajax({
     type: 'PUT',
     data: payLoad,

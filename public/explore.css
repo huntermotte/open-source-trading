@@ -15,6 +15,17 @@ li {
 .btn-default {
   font-size: 20px;
   margin-top: 20px;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+.navbar-btn, .navbar-btn:active {
+  background: dodgerblue;
+  color: white;
+}
+
+.navbar-btn:hover {
+  background: white;
+  color: dodgerblue;
 }
 
 .column {

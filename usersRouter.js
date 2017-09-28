@@ -136,7 +136,7 @@ router.put('/ideas', isAuthenticated, (req, res) => {
     return res.status(422).json({message: 'Missing field: security'});
   }
 
-  let {security, trade, description, id} = req.body;
+  let {security, trade, description, id, created} = req.body;
 
   if (!(trade)) {
     return res.status(422).json({message: 'Missing field: trade'});

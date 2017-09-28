@@ -8,6 +8,22 @@ body {
   border: 2px solid black;
 }
 
+.btn-default {
+  font-size: 20px;
+  margin-top: 20px;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+.navbar-btn, .navbar-btn:active {
+  background: dodgerblue;
+  color: white;
+}
+
+.navbar-btn:hover {
+  background: white;
+  color: dodgerblue;
+}
+
 .container-fluid {
   text-align: center;
   margin-bottom: 15px;

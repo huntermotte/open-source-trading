@@ -1,6 +1,7 @@
 h1, h2 {
   text-align: center;
   font-family: 'Ubuntu', sans-serif;
+  font-weight: bold;
 }
 
 .container-fluid {
@@ -10,6 +11,9 @@ h1, h2 {
 
 li {
   list-style: none;
+  padding-top: 10px;
+  text-align: left;
+  padding-bottom: 5px;
 }
 
 .btn-default {
@@ -49,8 +53,18 @@ nav {
 }
 
 ul {
-  font-size: 20px;
   font-family: 'Archivo Black', sans-serif;
+}
+
+.header {
+  display: inline;
+  color: dodgerblue;
+  font-size: 20px;
+}
+
+.idea-content {
+  display: inline;
+  font-size: 20px;
 }
 
 .page-header {

@@ -92,7 +92,7 @@ h2 {
   and (max-device-width: 667px)
   and (-webkit-min-device-pixel-ratio: 2) {
     body {
-      background: url(intlchart.jpg) no-repeat center center fixed;
+      background: url(intlchart2.jpg) no-repeat center center fixed;
       -webkit-background-size: cover;
       -moz-background-size: cover;
       -o-background-size: cover;
@@ -101,9 +101,9 @@ h2 {
 }
 
 /* Custom, iPhone Retina */
-@media only screen and (min-width : 320px) {
+@media only screen and (min-width : 320px) and (max-width : 480px) {
   body {
-    background-image: url(intlchart.jpg);
+    background-image: url(intlchart2.jpg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -114,7 +114,7 @@ h2 {
 /* Extra Small Devices, Phones */
 @media only screen and (min-width : 480px) and (max-width : 768px) {
      body {
-       background: url(intlchart.jpg) no-repeat center center fixed;
+       background: url(intlchart2.jpg) no-repeat center center fixed;
        -webkit-background-size: cover;
        -moz-background-size: cover;
        -o-background-size: cover;
@@ -126,14 +126,7 @@ h2 {
      }
 
 /* Small Devices, Tablets */
-@media only screen and (min-width : 768px) {
-  body {
-    background: url(intlchart.jpg) no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-  }
+@media only screen and (min-width : 768px) and (max-width : 992px) {
 
 }
 

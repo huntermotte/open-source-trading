@@ -186,7 +186,7 @@ router.post('/ideas/delete', isAuthenticated, (req, res) => {
 
 // get ideas from other users for explore page-header
 router.get('/ideas/explore', (req, res) => {
-  User.find({}).sort('-created')
+  User.find({}).sort({ideas[0].created: 'desc'})
   .then(users => {
     res.json({users: users.map(
       (user) => user.createExample())

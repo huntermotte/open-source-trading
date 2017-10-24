@@ -9,9 +9,9 @@ $('.newIdeaForm').submit(function(event) {
   $.ajax({
     type: 'PUT',
     data: payLoad,
-    url: 'https://gentle-peak-73337.herokuapp.com/users/ideas',
+    url: '/users/ideas',
     success: function(data) {
-      window.location.replace('https://gentle-peak-73337.herokuapp.com/profile.html')
+      window.location.replace('/profile.html')
     }
 })
 })

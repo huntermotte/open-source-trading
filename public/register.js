@@ -7,9 +7,9 @@ $('.registration-form').submit(function(event) {
     type: 'POST',
     data: payLoad,
     contentType: 'application/x-www-form-urlencoded',
-    url: 'https://gentle-peak-73337.herokuapp.com/users',
+    url: '/users',
     success: function(data) {
-      window.location.replace('https://gentle-peak-73337.herokuapp.com/loginPage.html')
+      window.location.replace('/loginPage.html')
     },
     error: (err) => {
       console.log(err)

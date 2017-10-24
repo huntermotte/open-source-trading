@@ -6,7 +6,7 @@ mongoose.Promise = global.Promise;
 
 const app = express();
 
-mongoose.connect('mongodb://admin:admin@ds157631.mlab.com:57631/trading-ideas-database');
+mongoose.connect('mongodb://admin:admin@ds157631.mlab.com:57631/trading-ideas-database' || 'mongodb://localhost:27017/open-source-trading');
 
 const {User} = require('./models');
 

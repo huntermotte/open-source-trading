@@ -186,16 +186,23 @@ router.post('/ideas/delete', isAuthenticated, (req, res) => {
 
 // get ideas from other users for explore page-header
 router.get('/ideas/explore', (req, res) => {
-  User.find({}).sort({ created: 'desc'})
-  .then(users => {
+  User.find({}).sort({created: 'desc'}).exec(function(err, users) {
+    console.log(users)
     res.json({users: users.map(
       (user) => user.createExample())
     });
-  })
-  .catch(err => {
-    console.log(err)
-    res.json({message: 'Internal server error'})
   });
+  // User.find({}).sort({created: -1})
+  // .exec()
+  // .then(users => {
+  //   res.json({users: users.map(
+  //     (user) => user.createExample())
+  //   });
+  // })
+  // .catch(err => {
+  //   console.log(err)
+  //   res.json({message: 'Internal server error'})
+  // });
 });
 
 // login endpoint
